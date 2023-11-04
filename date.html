@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            font-family: Raleway, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh;
+        }
+
+        .page {
+            display: none;
+            color: orange;
+        }
+
+        button {
+            background-color: orange;
+            color: white;
+            width: 150px;
+            height: 50px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="home" class="page">
+        <h1 id="greeting"></h1>
+        <button id="yesButton" style="display: none;">Yes</button>
+        <button id="noButton" style="display: none;">No</button>
+    </div>
+
+    <div id="noPage" class"page">
+        <h1>How dare you? Go back and click Yes.</h1>
+        <button id="backToHome">Back</button>
+    </div>
+
+    <div id="datePage" class="page">
+        <h1>Congratulations!</h1>
+        <p>Your date is planned at <a href="https://www.example.com/restaurant">this restaurant</a>.</p>
+        <button id="backToHomeFromCongratulations">Back</button>
+    </div>
+
+    <script>
+        const homePage = document.getElementById('home');
+        const noPage = document.getElementById('noPage');
+        const datePage = document.getElementById('datePage');
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const backToHomeButton = document.getElementById('backToHome');
+        const backToHomeFromCongratulationsButton = document.getElementById('backToHomeFromCongratulations');
+        const greetingElement = document.getElementById('greeting');
+        const textToType = "Hi Aman, would you like to go on a date with me?";
+        let textIndex = 0;
+
+        const typeText = () => {
+            if (textIndex < textToType.length) {
+                greetingElement.innerHTML += textToType.charAt(textIndex);
+                textIndex++;
+                setTimeout(typeText, 100); // Adjust typing speed here (e.g., 100ms)
+            } else {
+                // Text is fully typed, show the buttons
+                yesButton.style.display = 'inline-block';
+                noButton.style.display = 'inline-block';
+            }
+        };
+
+        typeText();
+
+        yesButton.addEventListener('click', function () {
+            homePage.style.display = 'none';
+            datePage.style.display = 'block';
+        });
+
+        noButton.addEventListener('click', function () {
+            homePage.style.display = 'none';
+            noPage.style.display = 'block';
+        });
+
+        backToHomeButton.addEventListener('click', function () {
+            noPage.style.display = 'none';
+            noPage.style.display = 'none';
+            homePage.style.display = 'block';
+        });
+        backToHomeFromCongratulationsButton.addEventListener('click', function () {
+            datePage.style.display = 'none';
+            homePage.style.display = 'block';
+            homePage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
