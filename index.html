@@ -38,14 +38,13 @@
         <button id="noButton" style="display: none;">No</button>
     </div>
 
-    <div id="noPage" class"page">
+    <div id="noPage" class="page">
         <h1>How dare you? Go back and click Yes.</h1>
         <button id="backToHome">Back</button>
     </div>
 
     <div id="datePage" class="page">
-        <h1>Congratulations!</h1>
-        <p>Your date is planned at <a href="https://www.example.com/restaurant">this restaurant</a>.</p>
+        <h1>Your date is planned at <a href="https://www.example.com/restaurant">this restaurant</a>.</h1>
         <button id="backToHomeFromCongratulations">Back</button>
     </div>
 
@@ -58,7 +57,12 @@
         const backToHomeButton = document.getElementById('backToHome');
         const backToHomeFromCongratulationsButton = document.getElementById('backToHomeFromCongratulations');
         const greetingElement = document.getElementById('greeting');
-        const textToType = "Hi Aman, would you like to go on a date with me?";
+
+        // Initially, display the home page and hide the others
+        homePage.style.display = 'block';
+        noPage.style.display = 'none';
+        datePage.style.display = 'none';
+        const textToType = "Hi Aman, would you like to go on a date with me ?";
         let textIndex = 0;
 
         const typeText = () => {
@@ -87,14 +91,13 @@
 
         backToHomeButton.addEventListener('click', function () {
             noPage.style.display = 'none';
-            noPage.style.display = 'none';
             homePage.style.display = 'block';
         });
         backToHomeFromCongratulationsButton.addEventListener('click', function () {
             datePage.style.display = 'none';
             homePage.style.display = 'block';
-            homePage.style.display = 'block';
         });
+
     </script>
 </body>
 </html>
